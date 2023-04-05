@@ -7,3 +7,13 @@ before_install:
 
 script:
   - docker run node-project npm run test 
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1" # where you created bean stalk
+  app: "docker" # name you give when created elastic bean stalk
+  bucket_name: "elasticbeanstalk-u-west-2-306476627547" # bucket created when creates bean stalk"
+  bucket_path: "docker" 
+  on:
+    branch: main
+    
