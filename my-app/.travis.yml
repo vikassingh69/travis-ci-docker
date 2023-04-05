@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t node-project .
+
+script:
+  - docker run node-project npm run test 
