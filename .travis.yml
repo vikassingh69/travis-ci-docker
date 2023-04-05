@@ -6,7 +6,7 @@ before_install:
   - docker build -t node-project .
 
 script:
-  - docker run node-project npm run test 
+  - docker run node-project npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
@@ -16,4 +16,7 @@ deploy:
   bucket_path: "docker" 
   on:
     branch: main
-    
+  access_key_id: $AWS_ACCESS_KEY  # add into travis env variable in setting of pipeline
+  secret_access_key: 
+    secret: $AWS_SECRET_KEY  # add into travis env variable in setting of pipeline
+
